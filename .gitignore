@@ -1,0 +1,5 @@
+oauth2app
+config/config.yaml
+./cmd/__debug_bin
+.vscode/
+build/

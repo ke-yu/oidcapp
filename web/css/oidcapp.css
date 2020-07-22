@@ -1,0 +1,52 @@
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    color: #000000;
+    font-size: 13px;
+}
+
+.label {
+    display: inline-block
+}
+
+.form-field {
+    margin: 10px;
+}
+
+.form-field label {
+    display: inline-block;
+    margin: 10px;
+    width: 200px;
+}
+
+.form-field input {
+    display: inline-block;
+    height: 26px;
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+    width: 300px;
+}
+
+/* Dashed border */
+hr.dashed {
+    border-top: 1px dashed #bbb;
+}
+  
+/* Dotted border */
+hr.dotted {
+    border-top: 1px dotted #bbb;
+}
+
+#container
+{
+    margin: 0 auto;
+    text-align:left;
+    display: block;
+}
+
+#result {
+    font-size: 18px;
+    text-align: left;
+}

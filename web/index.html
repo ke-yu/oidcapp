@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,300,400italic,400,600italic,600,700italic,700,800italic,800" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="/css/oidcapp.css"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Sample Web App</title>
+    </head>
+    <body>
+        <h1>OAuth2 Sample App</h1>
+        <a href="http://localhost:3000/">Home</a>
+        <br/>
+        <hr class="dashed">
+        <form action="/authorize" method="GET">
+            <button type="submit">OIDC Authorize</button>
+        </form>
+        <hr class="dashed">
+        <form action="/oauth_authorize" method="POST">
+            <div class="form-field">
+                <label><b>Authorize</b></label>
+            </div>
+            <div class="form-field">
+                <label>idp:</label>
+                <input class="text-box single-line" type="text" id="idp" name="idp" value="0oarzyxcz3wS4w8jn0h7"/>
+            </div>
+            <div class="form-field">
+                <label>Implicit:</label>
+                <input type="checkbox" id="implicit" name="implicit"/>
+            </div>
+            <div class="form-field">
+                <button type="submit">OAuth2 Authorize</button>
+            </div>
+        </form>
+        <hr class="dashed">
+        <form action="/oauth_clientcredentail" method="GET">
+            <button type="submit">OAuth2 Client Credentials</button>
+        </form>
+        <hr class="dashed">
+        <form action="/oauth_password" method="POST">
+            <div class="form-field">
+                <label><b>ROPC workflow</b></label>
+            </div>
+            <div class="form-field"> 
+                <label>ClientID:</label>
+                <input class="text-box single-line" type="text" id="clientid" name="clientid"/>
+            </div>
+            <div class="form-field"> 
+                <label>ClientSecret:</label>
+                <input class="text-box single-line" type="password" id="clientsecret" name="clientsecret"/>
+            </div>
+            <div class="form-field"> 
+                <label>Username:</label>
+                <input class="text-box single-line" type="text" id="username" name="username"/>
+            </div>
+            <div class="form-field">
+                <label>Password:</label>
+                <input class="text-box single-line" type="password" id="password" name="password"/>
+            </div>
+            <button type="submit">OAuth2 Resource Owner Password</button>
+        </form>
+        <hr class="dashed">
+        <form action="https://autodesk-test.oktapreview.com/sso/saml2/0oarzyxcz3wS4w8jn0h7" method="POST">
+            <div class="form-field">
+                <label><b>IdP initiated SSO</b></label>
+            </div>
+            <div class="form-field">
+                <label>SAMLResponse:</label>
+                <input class="text-box single-line" type="text" id="SAMLResponse" name="SAMLResponse"/>
+            </div>
+            <div class="form-field">
+                <label>RelayState:</label>
+                <select name="RelayState" id="RelayState">
+                    <option value="/oauth2/ausnudo7fnDpQuqUo0h7/v1/authorize?client_id=0oaspaj6ln02ifqtC0h7&idp=0oarzyxcz3wS4w8jn0h7&redirect_uri=http://localhost:3000/oauth_callback&response_type=code&scope=openid+email+offline_access&nonce=a123456&state=s123456">Explicit</option>
+                    <option value="/oauth2/ausnudo7fnDpQuqUo0h7/v1/authorize?client_id=0oaspaj6ln02ifqtC0h7&idp=0oarzyxcz3wS4w8jn0h7&redirect_uri=http://localhost:3000/oauth_implicit_callback&response_type=token&scope=openid+email+offline_access&nonce=a123456&state=s123456">Implicit</option>
+                </select>
+            </div>
+            <button type="submit">Post to ACS</button>
+        </form>
+        <hr class="dashed">
+        <div id="result">
+            <p id="access_token">Access Token:</p>
+            <span id="access_token">{{.AccessToken}}</span>
+            <p id="decoded_access_token">Decoded Access Token:</p>
+            <span id="decoded_access_token">{{.DecodedAccessToken}}</span>
+            <p id="refresh_token">Refresh Token:</p>
+            <span id="refresh_token">{{.RefreshToken}}</span>
+        </div>
+    </body>
+</html>
