@@ -1,0 +1,12 @@
+server:
+  addr: "localhost:3000"
+  machineKey: "mZq3t6w9z$C&F)J@NcRfUjXn2r5u7x!A"
+oauthServer:
+  orgUri: "https://<org>.oktapreview.com/"
+  authorizeServer: "https://<org>.oktapreview.com/oauth2/ausnudo7fnDpQuqUo0h7/"
+  clientId: "0oaspaj6ln02ifqtC0h7"
+  clientSecret: "<client_secret>"
+  callback: "http://localhost:3000/callback"
+  oauthCallback: "http://localhost:3000/oauth_callback"
+  oauthImplicitCallback: "http://localhost:3000/oauth_implicit_callback"
+  idp: "0oaqqohd2lJ3Xi9940h7"

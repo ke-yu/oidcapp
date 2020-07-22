@@ -101,7 +101,6 @@ func (e *oauthAuthorizeEndpoint) buildAuthorizeParameters(payload *authorizePayl
 	}
 	params.Add(oidc.ClientID, e.config.OAuthServer.ClientID)
 	params.Add(oidc.Nonce, "foo")
-	// params.Add("login_hint", "yu.ke@autodesk.com")
 	// params.Add("code_challenge_method", "S256")
 	// params.Add("code_challenge", "qjrzSW9gMiUgpUvqgEPE4_-8swvyCtfOVvg55o5S_es")
 	return params.Encode(), nil
