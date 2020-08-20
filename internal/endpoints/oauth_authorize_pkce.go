@@ -20,7 +20,7 @@ type oauthAuthorizePKCEEndpoint struct {
 
 // NewOAuthAuthorizePKCEEndpoint returns an endpoint for oauth authorize
 func NewOAuthAuthorizePKCEEndpoint(logger log.Logger, config *appconfig.Configuration) Endpoint {
-	return &oauthAuthorizeEndpoint{logger, config}
+	return &oauthAuthorizePKCEEndpoint{logger, config}
 }
 
 func (e *oauthAuthorizePKCEEndpoint) DecodeRequest(_ context.Context, r *http.Request) (interface{}, error) {
@@ -73,5 +73,6 @@ func (e *oauthAuthorizePKCEEndpoint) buildAuthorizeParameters(payload *authorize
 	params.Add(oidc.Nonce, "foo")
 	params.Add("code_challenge_method", "S256")
 	params.Add("code_challenge", "qjrzSW9gMiUgpUvqgEPE4_-8swvyCtfOVvg55o5S_es")
+
 	return params.Encode(), nil
 }
