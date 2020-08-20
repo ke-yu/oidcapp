@@ -41,7 +41,7 @@ func (e *oauthCallbackPKCEEndpoint) ProcessRequest(_ context.Context, r interfac
 		return nil, errors.New("code is not a string")
 	}
 
-	resp, err := sendCodeVerifierRequest(e.config, code)
+	resp, err := sendCodeVerifierRequest(e.config, code, "0oath1rv8dR26uy2G0h7")
 	if err != nil {
 		e.logger.Log("error", err)
 		return nil, err

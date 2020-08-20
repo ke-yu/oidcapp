@@ -41,7 +41,7 @@ func getTokenEndpoint() (string, error) {
 	return metadata.TokenEndpoint, nil
 }
 
-func sendCodeVerifierRequest(config *appconfig.Configuration, code string) (*resty.Response, error) {
+func sendCodeVerifierRequest(config *appconfig.Configuration, code string, clientID string) (*resty.Response, error) {
 	endpoint, err := getTokenEndpoint()
 	if err != nil {
 		return nil, err
@@ -51,8 +51,9 @@ func sendCodeVerifierRequest(config *appconfig.Configuration, code string) (*res
 		SetFormData(map[string]string{
 			oidc.GrantType:   oidc.GrantTypeAuthorizationCode,
 			oidc.Code:        code,
-			oidc.RedirectURI: config.OAuthServer.OAuthCallback,
-			"code_verifier":  "M25iVXpKU3puUjFaYWg3T1NDTDQtcW1ROUY5YXlwalNoc0hhkxifmZHag",
+			oidc.RedirectURI: config.OAuthServer.OAuthPKCECallback,
+			"code_verifier":  "M25iVXpKU3puUjFaYWg3T1NDTDQtcW1ROUY5YXlwalNoc0hhakxifmZHag",
+			"client_id":      clientID,
 		}).
 		SetResult(&TokenResponse{}).
 		Post(endpoint)
