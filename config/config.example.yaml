@@ -8,5 +8,6 @@ oauthServer:
   clientSecret: "<client_secret>"
   callback: "http://localhost:3000/callback"
   oauthCallback: "http://localhost:3000/oauth_callback"
+  oauthPKCECallback: "http://localhost:3000/oauth_callback_pkce"
   oauthImplicitCallback: "http://localhost:3000/oauth_implicit_callback"
   idp: "0oaqqohd2lJ3Xi9940h7"
