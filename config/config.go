@@ -19,6 +19,7 @@ type OAuthServer struct {
 	ClientSecret          string
 	Callback              string
 	OAuthCallback         string
+	OAuthPKCECallback     string
 	OAuthImplicitCallback string
 	AuthorizeServer       string
 }
@@ -50,6 +51,7 @@ func GetConfiguration() *Configuration {
 				ClientSecret:          viper.GetString("oauthServer.clientSecret"),
 				Callback:              viper.GetString("oauthServer.callback"),
 				OAuthCallback:         viper.GetString("oauthServer.oauthCallback"),
+				OAuthPKCECallback:     viper.GetString("oauthServer.oauthPKCECallback"),
 				OAuthImplicitCallback: viper.GetString("oauthServer.oauthImplicitCallback"),
 				AuthorizeServer:       viper.GetString("oauthServer.AuthorizeServer"),
 			},

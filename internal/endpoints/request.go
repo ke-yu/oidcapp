@@ -20,11 +20,16 @@ func newTokenRequest(digest string) *resty.Request {
 		client = resty.New().SetTimeout(5 * time.Second)
 	})
 
-	return client.R().
+	req := client.R().
 		EnableTrace().
 		SetHeader("Content-Type", "application/x-www-form-urlencoded").
-		SetHeader("Accept", "application/json").
-		SetHeader("Authorization", "Basic "+digest)
+		SetHeader("Accept", "application/json")
+
+	if len(digest) == 0 {
+		return req
+	}
+
+	return req.SetHeader("Authorization", "Basic "+digest)
 }
 
 func getTokenEndpoint() (string, error) {
@@ -34,6 +39,23 @@ func getTokenEndpoint() (string, error) {
 	}
 
 	return metadata.TokenEndpoint, nil
+}
+
+func sendCodeVerifierRequest(config *appconfig.Configuration, code string) (*resty.Response, error) {
+	endpoint, err := getTokenEndpoint()
+	if err != nil {
+		return nil, err
+	}
+
+	return newTokenRequest("").
+		SetFormData(map[string]string{
+			oidc.GrantType:   oidc.GrantTypeAuthorizationCode,
+			oidc.Code:        code,
+			oidc.RedirectURI: config.OAuthServer.OAuthCallback,
+			"code_verifier":  "M25iVXpKU3puUjFaYWg3T1NDTDQtcW1ROUY5YXlwalNoc0hhkxifmZHag",
+		}).
+		SetResult(&TokenResponse{}).
+		Post(endpoint)
 }
 
 func sendAuthorizationCodeRequest(config *appconfig.Configuration, code string) (*resty.Response, error) {

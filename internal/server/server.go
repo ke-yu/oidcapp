@@ -71,6 +71,7 @@ func NewServer(logger log.Logger, config *appconfig.Configuration) http.Handler 
 	register(r, "/oauth_authorize", []string{http.MethodGet, http.MethodPost}, endpoints.NewOAuthAuthorizeEndpoint(logger, config), options)
 	register(r, "/oauth_authorize_pkce", []string{http.MethodGet, http.MethodPost}, endpoints.NewOAuthAuthorizePKCEEndpoint(logger, config), options)
 	register(r, "/oauth_callback", []string{http.MethodGet}, endpoints.NewOAuthCallbackEndpoint(logger, config), options)
+	register(r, "/oauth_callback_pkce", []string{http.MethodGet}, endpoints.NewOAuthCallbackPKCEEndpoint(logger, config), options)
 	register(r, "/oauth_implicit_callback", []string{http.MethodGet, http.MethodPost}, endpoints.NewOAuthImplicitCallbackEndpoint(logger, config), options)
 	register(r, "/oauth_clientcredentail", []string{http.MethodGet}, endpoints.NewOAuthClientCredentialEndpoint(logger, config), options)
 	register(r, "/oauth_password", []string{http.MethodPost}, endpoints.NewPasswordEndpoint(logger, config), options)

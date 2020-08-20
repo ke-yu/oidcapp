@@ -66,7 +66,7 @@ func (e *oauthAuthorizePKCEEndpoint) buildAuthorizeParameters(payload *authorize
 
 	params := url.Values{}
 	params.Add(oidc.ResponseType, oidc.ResponseTypeCode /*"token"*/)
-	params.Add(oidc.RedirectURI, e.config.OAuthServer.OAuthCallback)
+	params.Add(oidc.RedirectURI, e.config.OAuthServer.OAuthPKCECallback)
 	params.Add(oidc.Scope, oidc.ScopeOpenIDEmailOffline)
 	params.Add(oidc.State, state)
 	params.Add(oidc.ClientID, "0oath1rv8dR26uy2G0h7")
